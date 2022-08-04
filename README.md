@@ -11,6 +11,7 @@ where Publicacao >= '2014-01-01'
 order by Publicacao;
 
 ```
+[Livros.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9262079/Livros.csv)
 
 ### b) Listar os 10 livros mais caros
 c) Listar as 5 editoras que mais tem livros na biblioteca
