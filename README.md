@@ -1,9 +1,9 @@
 # estagio_compass.uol
 
 
-3. Criar e executar as consultas abaixo sobre o modelo de dados de uma Biblioteca:
+## 3. Criar e executar as consultas abaixo sobre o modelo de dados de uma Biblioteca:
 
-a) Listar todos os livros publicados após 2014
+### a) Listar todos os livros publicados após 2014
 
 ```sh
 select Titulo, Publicacao from programa_bolsas.LIVRO
@@ -12,8 +12,7 @@ order by Publicacao;
 
 ```
 
-
-b) Listar os 10 livros mais caros
+### b) Listar os 10 livros mais caros
 c) Listar as 5 editoras que mais tem livros na biblioteca
 d) Listar a quantidade de publicações de cada autor
 e) Listar a quantidade de publicações de cada editora
