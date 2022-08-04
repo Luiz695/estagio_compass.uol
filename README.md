@@ -6,12 +6,13 @@ Para a realização dos exercícios (compass) considerar os seguintes passos:
 
 ## 1. Instalar e Configurar cliente SQL. Por exemplo: DBeaver, MySQL Workbench, Oracle SQL Developer…
 
-### 2. Configurar conforme as informações abaixo:
-### 1. SGBD: MySQL
-### 2. URL: hive-metastore.cnpzwadswd70.us-east-1.rds.amazonaws.com
-### 3. PORTA: 3306
-### 4. USUÁRIO: programa_bolsas
-### 5. SENHA: pb
+## 2. Configurar conforme as informações abaixo:
+
+#### 1. SGBD: MySQL
+#### 2. URL: hive-metastore.cnpzwadswd70.us-east-1.rds.amazonaws.com
+#### 3. PORTA: 3306
+#### 4. USUÁRIO: programa_bolsas
+#### 5. SENHA: pb
 
 ## 3. Criar e executar as consultas abaixo sobre o modelo de dados de uma Biblioteca:
 
