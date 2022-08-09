@@ -36,6 +36,18 @@ order by 2 desc
 limit 10;
 
 ```
+
+```sh
+select Valor, Titulo from programa_bolsas.LIVRO
+having Valor >= 
+(
+select Valor from programa_bolsas.LIVRO
+order by 1 desc
+limit 10,1
+)
+order by 1 desc;
+```
+
 [10_LivrosValorMax.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9262480/LivrosValorMax.csv)
 
 ### c) Listar as 5 editoras que mais tem livros na biblioteca
