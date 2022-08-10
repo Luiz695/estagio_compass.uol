@@ -19,112 +19,112 @@ Para a realização dos exercícios (compass) considerar os seguintes passos:
 ### a) Listar todos os livros publicados após 2014
 
 ```sh
-
-select Titulo, Publicacao from programa_bolsas.LIVRO
-where Publicacao >= '2014-01-01'
+select Titulo
+     , Publicacao
+from programa_bolsas.LIVRO
+where YEAR(Publicacao) >= 2014
 order by 2;
-
 ```
-[Livros.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9262155/Livros.csv)
 
 ### b) Listar os 10 livros mais caros
 
 ```sh
-
-select Titulo, Valor from programa_bolsas.LIVRO
+select Titulo
+     , Valor
+from programa_bolsas.LIVRO
 order by 2 desc
 limit 10;
-
 ```
 
 ```sh
-select Valor, Titulo from programa_bolsas.LIVRO
-having Valor >= 
-(
-select Valor from programa_bolsas.LIVRO
-order by 1 desc
-limit 10,1
-)
+select Valor
+     , Titulo
+from programa_bolsas.LIVRO
+having Valor >=
+       (select Valor
+        from programa_bolsas.LIVRO
+        order by 1 desc
+        limit 10 ,1)
 order by 1 desc;
 ```
-
-[10_LivrosValorMax.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9262480/LivrosValorMax.csv)
 
 ### c) Listar as 5 editoras que mais tem livros na biblioteca
 
 ```sh
-
-select E.Nome, count(L.Cod) as Qtd_Publicacao from programa_bolsas.LIVRO L
-inner join EDITORA E
-on E.CodEditora = L.Editora
-group by E.Nome 
+select E.Nome
+     , count(L.Cod) as Qtd_Publicacao
+from programa_bolsas.LIVRO L
+         inner join
+     programa_bolsas.EDITORA E
+     on E.CodEditora = L.Editora
+group by E.Nome
 order by count(L.Cod) desc
 limit 5;
-
 ```
-[5_Top_EditoraNumLivros.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9271092/5_Top_EditoraNumLivros.csv)
 
 ### d) Listar a quantidade de publicações de cada autor
 
 ```sh
-
-select A.Nome, count(L.Publicacao) as Qtd_Publicacao from programa_bolsas.LIVRO L
-right join AUTOR A
-on L.Autor = A.CodAutor
-group by A.CodAutor 
-order by 1 asc;
-
+select A.Nome
+     , count(L.Publicacao) as Qtd_Publicacao
+from programa_bolsas.LIVRO L
+         right join
+     programa_bolsas.AUTOR A
+     on L.Autor = A.CodAutor
+group by A.CodAutor
+order by 1;
 ```
-[QtdPubliAutor.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9271446/QtdPubliAutor.csv)
 
 ### e) Listar a quantidade de publicações de cada editora
 
 ```sh
-
-select distinct E.Nome , count(L.Publicacao) as Qtd_Publicacao from programa_bolsas.LIVRO L
-left join EDITORA E
-on L.Editora = E.CodEditora
+select distinct E.Nome
+              , count(L.Publicacao) as Qtd_Publicacao
+from programa_bolsas.LIVRO L
+         left join
+     programa_bolsas.EDITORA E
+     on L.Editora = E.CodEditora
 group by E.CodEditora
-order by 1 asc;
-
+order by 1;
 ```
-[QtdPubliEditora.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9271475/QtdPubliEditora.csv)
 
 ### f) Listar qual é o autor com mais publicações
 
 ```sh
-
-select A.Nome, count(L.Publicacao) as Qtd_Publicacao from programa_bolsas.LIVRO L
-left join AUTOR A
-on L.Autor = A.CodAutor
+select A.Nome
+     , count(L.Publicacao) as Qtd_Publicacao
+from programa_bolsas.LIVRO L
+         left join
+     programa_bolsas.AUTOR A
+     on L.Autor = A.CodAutor
 group by A.CodAutor
 order by 2 desc;
 ```
 
-[AutorMaxPublicacao.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9271559/AutorMaxPublicacao.csv)
-
 ### g) Listar qual é o autor com menos ou nenhuma publicação
 
 ```sh
-select A.Nome, count(L.Publicacao) AS Qtd_Publicada from programa_bolsas.AUTOR A
-left join programa_bolsas.LIVRO L
-on A.CodAutor = L.Autor 
-group by 1 
+select A.Nome
+     , count(L.Publicacao) AS Qtd_Publicada
+from programa_bolsas.AUTOR A
+         left join
+     programa_bolsas.LIVRO L
+     on A.CodAutor = L.Autor
+group by 1
 having Qtd_Publicada = 0
-order by 1 
-;
+order by 1;
 ```
-[AutorNullPublicacao.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9271573/AutorNullPublicacao.csv)
 
 ```sh
-select A.Nome, count(L.Publicacao) as Qtd_Publicacao from programa_bolsas.LIVRO L
-inner join AUTOR A
-on L.Autor = A.CodAutor
+select A.Nome
+     , count(L.Publicacao) as Qtd_Publicacao
+from programa_bolsas.LIVRO L
+         inner join
+     programa_bolsas.AUTOR A
+     on L.Autor = A.CodAutor
 group by A.CodAutor
-order by count(L.Publicacao) asc
-;
+order by count(L.Publicacao);
 ```
-[AutorMinPublicacao.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9271591/AutorMinPublicacao.csv)
 
 ## 4. Criar e executar as consultas abaixo sobre o modelo de dados de uma Loja:
 
