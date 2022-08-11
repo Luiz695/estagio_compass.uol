@@ -224,4 +224,4 @@ order by 2 desc;
 
 # j) selecione os gastos por dependente.
 
-# a tabela não possue relacao com outra ou nenhum valor para extrair esta informacao
+#a tabela não possue relacao com outra ou nenhum valor para extrair esta informacao

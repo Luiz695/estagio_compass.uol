@@ -233,6 +233,7 @@ from (select distinct NmCli, sum(Qtd) * VrUnt as TotalCompras
 
 ### e) selecione a escola que mais gastou.
 
+# a tabela não possue relacao com outra ou nenhum valor para extrair esta informacao
 ```sql
 
 ```
@@ -286,6 +287,7 @@ order by 2 desc;
 
 ### j) selecione os gastos por dependente.
 
+# a tabela não possue relacao com outra ou nenhum valor para extrair esta informacao
 ```sql
 
 ```
