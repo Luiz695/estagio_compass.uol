@@ -1,48 +1,21 @@
-# estagio_compass.uol
+# 3. Criar e executar as consultas abaixo sobre o modelo de dados de uma Biblioteca:
 
-# SPRINT 1
+# a) Listar todos os livros publicados após 2014
 
-# Exercícios:
-
-Para a realização dos exercícios (compass) considerar os seguintes passos:
-
-## 1. Instalar e Configurar cliente SQL. Por exemplo: DBeaver, MySQL Workbench, Oracle SQL Developer…
-
-## 2. Configurar conforme as informações abaixo:
-
-#### 1. SGBD: MySQL
-
-#### 2. URL: hive-metastore.cnpzwadswd70.us-east-1.rds.amazonaws.com
-
-#### 3. PORTA: 3306
-
-#### 4. USUÁRIO: programa_bolsas
-
-#### 5. SENHA: pb
-
-## 3. Criar e executar as consultas abaixo sobre o modelo de dados de uma Biblioteca:
-
-### a) Listar todos os livros publicados após 2014
-
-```sql
 select Titulo
      , Publicacao
 from programa_bolsas.LIVRO
 where YEAR(Publicacao) >= 2014
 order by 2;
-```
 
-### b) Listar os 10 livros mais caros
+# b) Listar os 10 livros mais caros
 
-```sql
 select Titulo
      , Valor
 from programa_bolsas.LIVRO
 order by 2 desc
 limit 10;
-```
 
-```sql
 select Valor
      , Titulo
 from programa_bolsas.LIVRO
@@ -52,11 +25,9 @@ where Valor >=
        order by 1 desc
        limit 10 ,1)
 order by 1 desc;
-```
 
-### c) Listar as 5 editoras que mais tem livros na biblioteca
+# c) Listar as 5 editoras que mais tem livros na biblioteca
 
-```sql
 select E.Nome
      , count(L.Cod) as Qtd_Publicacao
 from programa_bolsas.LIVRO L
@@ -66,9 +37,7 @@ from programa_bolsas.LIVRO L
 group by E.Nome
 order by count(L.Cod) desc
 limit 5;
-```
 
-```sql
 select E.Nome
      , count(L.Cod) as Qtd_Publicacao
 from programa_bolsas.LIVRO L
@@ -78,9 +47,7 @@ from programa_bolsas.LIVRO L
 group by E.CodEditora
 order by count(L.Cod) desc
 limit 5;
-```
 
-```sql
 select E.Nome
      , count(L.Cod) as Qtd_Publicacao
 from programa_bolsas.LIVRO L
@@ -97,11 +64,9 @@ having Qtd_Publicacao >=
         group by E.CodEditora
         order by count(L.Cod) desc
         limit 5, 1);
-```
 
-### d) Listar a quantidade de publicações de cada autor
+# d) Listar a quantidade de publicações de cada autor
 
-```sql
 select A.Nome
      , count(L.Publicacao) as Qtd_Publicacao
 from programa_bolsas.LIVRO L
@@ -110,11 +75,9 @@ from programa_bolsas.LIVRO L
      on L.Autor = A.CodAutor
 group by A.CodAutor
 order by 1;
-```
 
-### e) Listar a quantidade de publicações de cada editora
+# e) Listar a quantidade de publicações de cada editora
 
-```sql
 select distinct E.Nome
               , count(L.Publicacao) as Qtd_Pub
 from programa_bolsas.LIVRO L
@@ -123,11 +86,9 @@ from programa_bolsas.LIVRO L
      on L.Editora = E.CodEditora
 group by E.CodEditora
 order by 1;
-```
 
-### f) Listar qual é o autor com mais publicações
+# f) Listar qual é o autor com mais publicações
 
-```sql
 select A.Nome
      , count(L.Publicacao) as Qtd_Publicacao
 from programa_bolsas.LIVRO L
@@ -136,11 +97,9 @@ from programa_bolsas.LIVRO L
      on L.Autor = A.CodAutor
 group by A.CodAutor
 order by 2 desc;
-```
 
-### g) Listar qual é o autor com menos ou nenhuma publicação
+# g) Listar qual é o autor com menos ou nenhuma publicação
 
-```sql
 select A.Nome
      , A.CodAutor
      , count(L.Publicacao) AS Qtd_Publicada
@@ -151,9 +110,7 @@ from programa_bolsas.AUTOR A
 group by 1
 having Qtd_Publicada = 0
 order by 1;
-```
 
-```sql
 select A.Nome
      , count(L.Publicacao) as Qtd_Publicacao
 from programa_bolsas.LIVRO L
@@ -163,17 +120,15 @@ from programa_bolsas.LIVRO L
 group by A.CodAutor
 order by count(L.Publicacao)
 limit 1;
-```
 
-## 4. Criar e executar as consultas abaixo sobre o modelo de dados de uma Loja:
+# 4. Criar e executar as consultas abaixo sobre o modelo de dados de uma Loja:
 
-### a) selecione o nome e o código do vendedor com o maior número de vendas.
+# a) selecione o nome e o código do vendedor com o maior número de vendas.
 
-```sql
 select CdVdd
      , NmVdd
      , max(Qtd_Vendas)
-from TbVendedor
+from programa_bolsas.TbVendedor
          inner join
      (select count(Vdd.CdVdd) as Qtd_Vendas
       from programa_bolsas.TbVendedor Vdd
@@ -181,111 +136,90 @@ from TbVendedor
            programa_bolsas.TbVendas V
            on Vdd.CdVdd = V.CdVdd
       where V.status = 'Concluído'
-      group by Vdd.CdVdd) X
-```
+      group by Vdd.CdVdd) X;
 
-### b) selecione o produto mais vendido entre as datas de 2014-02-03 até 2018-02-02.
+# b) selecione o produto mais vendido entre as datas de 2014-02-03 até 2018-02-02.
 
-```sql
 select CdPro
      , NmPro
      , max(MaisVendido) as MaisVendido
-from TbVendas
+from programa_bolsas.TbVendas
          inner join
      (select sum(Qtd) as MaisVendido
-      from TbVendas
+      from programa_bolsas.TbVendas
       where (DtVen between '2014-02-03' and '2018-02-02')
         and (status = 'Concluído')
-      group by CdPro) X
-```
+      group by CdPro) X;
 
-### c) calcule a comissão dos vendedores.
+# c) calcule a comissão dos vendedores.
 
-```sql
 select A.NmVdd
      , A.CdVdd
      , round((sum(X.VendaTotal) * A.PercComissao / 100), 2) as Comissao
 from (select CdVdd, NmPro, sum(Qtd) * VrUnt as VendaTotal
-      from TbVendas
+      from programa_bolsas.TbVendas
       where status = 'Concluído'
       group by CdPro, CdVdd) X
          inner join
-     TbVendedor A
+     programa_bolsas.TbVendedor A
      on X.CdVdd = A.CdVdd
 group by CdVdd
 order by 2;
-```
 
-### d) selecione o cliente que mais gastou.
+# d) selecione o cliente que mais gastou.
 
-```sql
 select *
      , case
            when TotalCompras = max(TotalCompras) then 'Cliente com maior gasto'
-        end
-        as 'RESULTADO'
+    end
+    as 'RESULTADO'
 from (select distinct NmCli, sum(Qtd) * VrUnt as TotalCompras
-      from TbVendas
+      from programa_bolsas.TbVendas
       where status = 'Concluído'
       group by CdCli
-      order by 2 desc) X
-```
+      order by 2 desc) X;
 
-### e) selecione a escola que mais gastou.
+# e) selecione a escola que mais gastou.
 
-```sql
 
-```
+# f) selecione os 10 produtos menos vendidos por ecommerce e pela matriz.
 
-### f) selecione os 10 produtos menos vendidos por ecommerce e pela matriz.
-
-```sql
 select NmPro
      , Qtd
      , NmCanalVendas
-from TbVendas
+from programa_bolsas.TbVendas
 where Qtd <=
       (select Qtd
-       from TbVendas
+       from programa_bolsas.TbVendas
        order by 1
        limit 9, 1)
-order by 2
-```
+order by 2;
 
-### g) calcule a média de gasto por estado.
+# g) calcule a média de gasto por estado.
 
-```sql
-SELECT Estado
-     , ROUND(AVG(Qtd * VrUnt), 2) as MEDIA_GASTO_ESTADO
-FROM TbVendas
+select Estado
+     , round(avg(Qtd * VrUnt), 2) as MEDIA_GASTO_ESTADO
+from programa_bolsas.TbVendas
 where status = 'Concluído'
-GROUP BY ESTADO
+group by ESTADO
        , CdPro
 order by 2 desc;
-```
 
-### h) selecione todos os registros deletados.
+# h) selecione todos os registros deletados.
 
-```sql
 select *
-from TbVendas
-where deletado = 1
-```
+from programa_bolsas.TbVendas
+where deletado = 1;
 
-### i) calcule a média da quantidade vendida de cada produto por estado.
+# i) calcule a média da quantidade vendida de cada produto por estado.
 
-```sql
-SELECT Estado
-     , ROUND(AVG(Qtd), 2) as MEDIA_QTD_VEN_ESTADO
-FROM TbVendas
+select Estado
+     , round(avg(Qtd), 2) as MEDIA_QTD_VEN_ESTADO
+from programa_bolsas.TbVendas
 where status = 'Concluído'
-GROUP BY ESTADO
+group by ESTADO
        , CdPro
 order by 2 desc;
-```
 
-### j) selecione os gastos por dependente.
+# j) selecione os gastos por dependente.
 
-```sql
-
-```
