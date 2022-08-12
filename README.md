@@ -241,16 +241,14 @@ from (select distinct NmCli, sum(Qtd) * VrUnt as TotalCompras
 ### f) selecione os 10 produtos menos vendidos por ecommerce e pela matriz.
 
 ```sql
-select NmPro
-     , Qtd
+select CdPro
+     , NmPro
+     , count(CdPro) as Num_Vendas
      , NmCanalVendas
 from TbVendas
-where Qtd <=
-      (select Qtd
-       from TbVendas
-       order by 1
-       limit 9, 1)
-order by 2
+group by CdPro, NmCanalVendas
+order by 3
+limit 10;
 ```
 
 ### g) calcule a média de gasto por estado.
