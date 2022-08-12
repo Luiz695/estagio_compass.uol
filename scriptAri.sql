@@ -189,7 +189,7 @@ select CdPro
      , NmPro
      , count(CdPro) as Num_Vendas
      , NmCanalVendas
-from TbVendas
+from programa_bolsas.TbVendas
 group by CdPro, NmCanalVendas
 order by 3
 limit 10;
