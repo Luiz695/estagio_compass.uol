@@ -254,11 +254,11 @@ limit 10;
 ### g) calcule a média de gasto por estado.
 
 ```sql
-SELECT Estado
-     , ROUND(AVG(Qtd * VrUnt), 2) as MEDIA_GASTO_ESTADO
-FROM TbVendas
+select Estado
+     , round(avg(Qtd * VrUnt), 2) as MEDIA_GASTO_ESTADO
+from TbVendas
 where status = 'Concluído'
-GROUP BY ESTADO
+group by Estado
        , CdPro
 order by 2 desc;
 ```
@@ -274,11 +274,11 @@ where deletado = 1
 ### i) calcule a média da quantidade vendida de cada produto por estado.
 
 ```sql
-SELECT Estado
-     , ROUND(AVG(Qtd), 2) as MEDIA_QTD_VEN_ESTADO
-FROM TbVendas
+select Estado
+     , round(avg(Qtd), 2) as MEDIA_QTD_VEN_ESTADO
+from TbVendas
 where status = 'Concluído'
-GROUP BY ESTADO
+group by Estado
        , CdPro
 order by 2 desc;
 ```
