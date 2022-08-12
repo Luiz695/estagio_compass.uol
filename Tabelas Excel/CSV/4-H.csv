@@ -1,0 +1,4 @@
+"CdVen";"DtVen";"CdCli";"NmCli";"Cidade";"Estado";"Pais";"CdPro";"NmPro";"TpPro";"Qtd";"Und";"VrUnt";"CdVdd";"CdCanalVendas";"NmCanalVendas";"status";"deletado"
+23;"2021-08-07 00:00:00";2;"Cliente EF";"Belo Horizonte";"Minas Gerais";"Brasil";1;"Produto A";"A";20000;"KG";0.34;9;2;"Ecommerce";"Em aberto";"1"
+55;"2016-02-01 00:00:00";5;"Cliente BB";"Belo Horizonte";"Minas Gerais";"Brasil";1;"Produto A";"A";24200;"KG";0.34;4;1;"Matriz";"Em aberto";"1"
+67;"2017-04-04 00:00:00";4;"Cliente CC";"Fortaleza";"Ceará";"Brasil";1;"Produto A";"A";14500;"KG";0.34;1;1;"Matriz";"Em aberto";"1"

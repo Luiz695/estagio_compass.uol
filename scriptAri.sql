@@ -6,7 +6,8 @@ select Titulo
      , Publicacao
 from programa_bolsas.LIVRO
 where YEAR(Publicacao) >= 2014
-order by 2;
+order by 2 asc;
+
 
 # b) Listar os 10 livros mais caros
 

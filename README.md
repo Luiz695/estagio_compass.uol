@@ -31,6 +31,7 @@ from programa_bolsas.LIVRO
 where YEAR(Publicacao) >= 2014
 order by 2;
 ```
+[3-A.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329108/3-A.csv)
 
 ### b) Listar os 10 livros mais caros
 
@@ -41,7 +42,7 @@ from programa_bolsas.LIVRO
 order by 2 desc
 limit 10;
 ```
-
+[3-B-1.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329120/3-B-1.csv)
 ```sql
 select Valor
      , Titulo
@@ -53,6 +54,7 @@ where Valor >=
        limit 10 ,1)
 order by 1 desc;
 ```
+[3-B-2.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329123/3-B-2.csv)
 
 ### c) Listar as 5 editoras que mais tem livros na biblioteca
 
@@ -67,7 +69,7 @@ group by E.Nome
 order by count(L.Cod) desc
 limit 5;
 ```
-
+[3-C-1.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329130/3-C-1.csv)
 ```sql
 select E.Nome
      , count(L.Cod) as Qtd_Publicacao
@@ -79,7 +81,7 @@ group by E.CodEditora
 order by count(L.Cod) desc
 limit 5;
 ```
-
+[3-C-2.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329131/3-C-2.csv)
 ```sql
 select E.Nome
      , count(L.Cod) as Qtd_Publicacao
@@ -98,7 +100,7 @@ having Qtd_Publicacao >=
         order by count(L.Cod) desc
         limit 5, 1);
 ```
-
+[3-C-3.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329132/3-C-3.csv)
 ### d) Listar a quantidade de publicações de cada autor
 
 ```sql
@@ -111,6 +113,7 @@ from programa_bolsas.LIVRO L
 group by A.CodAutor
 order by 1;
 ```
+[3-D.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329136/3-D.csv)
 
 ### e) Listar a quantidade de publicações de cada editora
 
@@ -124,6 +127,7 @@ from programa_bolsas.LIVRO L
 group by E.CodEditora
 order by 1;
 ```
+[3-E.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329138/3-E.csv)
 
 ### f) Listar qual é o autor com mais publicações
 
@@ -137,6 +141,7 @@ from programa_bolsas.LIVRO L
 group by A.CodAutor
 order by 2 desc;
 ```
+[3-F.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329143/3-F.csv)
 
 ### g) Listar qual é o autor com menos ou nenhuma publicação
 
@@ -152,7 +157,7 @@ group by 1
 having Qtd_Publicada = 0
 order by 1;
 ```
-
+[3-G-1.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329150/3-G-1.csv)
 ```sql
 select A.Nome
      , count(L.Publicacao) as Qtd_Publicacao
@@ -164,7 +169,7 @@ group by A.CodAutor
 order by count(L.Publicacao)
 limit 1;
 ```
-
+[3-G-2.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329152/3-G-2.csv)
 ## 4. Criar e executar as consultas abaixo sobre o modelo de dados de uma Loja:
 
 ### a) selecione o nome e o código do vendedor com o maior número de vendas.
@@ -183,6 +188,7 @@ from TbVendedor
       where V.status = 'Concluído'
       group by Vdd.CdVdd) X
 ```
+[4-A.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329166/4-A.csv)
 
 ### b) selecione o produto mais vendido entre as datas de 2014-02-03 até 2018-02-02.
 
@@ -198,7 +204,7 @@ from TbVendas
         and (status = 'Concluído')
       group by CdPro) X
 ```
-
+[4-B.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329182/4-B.csv)
 ### c) calcule a comissão dos vendedores.
 
 ```sql
@@ -215,6 +221,7 @@ from (select CdVdd, NmPro, sum(Qtd) * VrUnt as VendaTotal
 group by CdVdd
 order by 2;
 ```
+[4-C.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329196/4-C.csv)
 
 ### d) selecione o cliente que mais gastou.
 
@@ -230,6 +237,7 @@ from (select distinct NmCli, sum(Qtd) * VrUnt as TotalCompras
       group by CdCli
       order by 2 desc) X
 ```
+[4-D.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329201/4-D.csv)
 
 ### e) selecione a escola que mais gastou.
 
@@ -250,7 +258,7 @@ group by CdPro, NmCanalVendas
 order by 3
 limit 10;
 ```
-
+[4-F.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329221/4-F.csv)
 ### g) calcule a média de gasto por estado.
 
 ```sql
@@ -262,7 +270,7 @@ group by Estado
        , CdPro
 order by 2 desc;
 ```
-
+[4-G.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329224/4-G.csv)
 ### h) selecione todos os registros deletados.
 
 ```sql
@@ -270,7 +278,7 @@ select *
 from TbVendas
 where deletado = 1
 ```
-
+[4-H.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329230/4-H.csv)
 ### i) calcule a média da quantidade vendida de cada produto por estado.
 
 ```sql
@@ -282,7 +290,7 @@ group by Estado
        , CdPro
 order by 2 desc;
 ```
-
+[4-I.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329233/4-I.csv)
 ### j) selecione os gastos por dependente.
 
 #### a tabela não possue relacao com outra ou nenhum valor para extrair esta informacao
