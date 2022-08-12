@@ -6,7 +6,7 @@ select Titulo
      , Publicacao
 from programa_bolsas.LIVRO
 where YEAR(Publicacao) >= 2014
-order by 2 asc;
+order by 2;
 
 
 # b) Listar os 10 livros mais caros
@@ -215,7 +215,7 @@ where deletado = 1;
 
 select Estado
      , round(avg(Qtd), 2) as MEDIA_QTD_VEN_ESTADO
-from programa_bolsas.TbVendas
+from TbVendas
 where status = 'Concluído'
 group by ESTADO
        , CdPro

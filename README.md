@@ -111,7 +111,7 @@ from programa_bolsas.LIVRO L
      programa_bolsas.AUTOR A
      on L.Autor = A.CodAutor
 group by A.CodAutor
-order by 1;
+order by 1 ;
 ```
 [3-D.csv](https://github.com/AriHenrique/estagio_compass.uol/files/9329136/3-D.csv)
 
