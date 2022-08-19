@@ -8,7 +8,6 @@ from programa_bolsas.LIVRO
 where YEAR(Publicacao) >= 2014
 order by 2;
 
-
 # b) Listar os 10 livros mais caros
 
 select Titulo

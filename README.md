@@ -6,7 +6,7 @@
 
 Para a realização dos exercícios (compass) considerar os seguintes passos:
 
-## 1. Instalar e Configurar cliente SQL. Por exemplo: DBeaver, MySQL Workbench, Oracle SQL Developer…
+### 1. Instalar e Configurar cliente SQL. Por exemplo: DBeaver, MySQL Workbench, Oracle SQL Developer…
 
 ## 2. Configurar conforme as informações abaixo:
 
